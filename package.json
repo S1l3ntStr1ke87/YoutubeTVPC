@@ -23,10 +23,9 @@
       "output": "release"
     },
     "files": [
-      "dist/**/*/",
+      "dist/**/*",
       "assets/**/*",
       "node_modules/**/*",
-      "package-lock.json",
       "package.json"
     ],
     "win": {
