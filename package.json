@@ -1,0 +1,58 @@
+{
+  "name": "youtubetvpc",
+  "version": "1.0.0",
+  "description": "YouTube TV & Consoles app on PC",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "npx tsc",
+    "dist": "npm run build && electron-builder --publish=never"
+  },
+  "author": {
+    "name": "str1k3r"
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.0",
+    "electron": "^42.3.0",
+    "electron-builder": "^26.8.1",
+    "typescript": "^5.0.0"
+  },
+  "build": {
+    "appId": "com.youtubetvpc.app",
+    "productName": "YouTubeTVPC",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "assets/**/*",
+      "node_modules/**/*",
+      "package-lock.json",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico",
+      "signAndEditExecutable": false
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "tar.gz"
+      ],
+      "category": "Media",
+      "icon": "assets/icon.png"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icon.icns"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico",
+      "allowToChangeInstallationDirectory": false,
+      "artifactName": "${productName}.Setup.${version}.${ext}"
+    }
+  }
+}
