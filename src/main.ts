@@ -4,8 +4,6 @@ import * as path from "path";
 
 app.setAppUserModelId("com.youtubetvpc.app");
 
-app.disableHardwareAcceleration();
-
 app.commandLine.appendSwitch(
   "disable-features",
   "CalculateNativeWinOcclusion"
@@ -41,7 +39,7 @@ function createWindow(): void {
   
   // Since this is just a browser we have to set these to transparent to fix black backgrounds on text.
   win.once('ready-to-show', async () => {
-  win.webContents.insertCSS(`
+  await win.webContents.insertCSS(`
     yt-formatted-string,
     ytlr-video-title-tray,
     ytlr-video-metadata-line,
