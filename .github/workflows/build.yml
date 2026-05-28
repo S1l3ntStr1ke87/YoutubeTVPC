@@ -45,6 +45,10 @@ jobs:
           USE_HARD_LINKS: false
           CSC_IDENTITY_AUTO_DISCOVERY: false
 
+      - name: Zip Portable
+        if: matrix.os == 'windows-2022'
+        run: 7z a -r Windows-Portable.zip ./release/win-unpacked/*
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -53,6 +57,7 @@ jobs:
             release/*.exe
             release/*.AppImage
             release/*.tar.gz
+            relase/*.zip
 
   release:
     needs: build
@@ -77,6 +82,7 @@ jobs:
             release/**/*.exe
             release/**/*.AppImage
             release/**/*.tar.gz
+            relase/*.zip
           draft: false
           prerelease: false
         env:
